@@ -98,7 +98,6 @@ cxf {
        namespace = "cxf.client.postalcode"
        clientInterface = cxf.client.postalcode.IPostalCodeService
        serviceEndpointAddress = "http://www.restfulwebservices.net/wcf/USAZipCodeService.svc"
-      contentType = 'text/xml; charset=utf-8'
      }
   }
 }

@@ -41,7 +41,7 @@ grails.project.dependency.resolution = {
     runtime ":hibernate:$grailsVersion"
     runtime ":jquery:1.7.2"
     runtime ":resources:1.1.6"
-    runtime ":cxf-client:1.5.1"
+    runtime ":cxf-client:1.5.2"
 
     runtime ":spock:0.7"
 
