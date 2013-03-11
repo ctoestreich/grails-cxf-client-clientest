@@ -7,53 +7,53 @@ grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.dependency.resolution = {
-  // inherit Grails' default dependencies
-  inherits("global") {
-    // specify dependency exclusions here; for example, uncomment this to disable ehcache:
-    // excludes 'ehcache'
-  }
-  log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-  checksums true // Whether to verify checksums on resolve
+    // inherit Grails' default dependencies
+    inherits("global") {
+        // specify dependency exclusions here; for example, uncomment this to disable ehcache:
+        // excludes 'ehcache'
+    }
+    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    checksums true // Whether to verify checksums on resolve
 
-  repositories {
-    inherits true // Whether to inherit repository definitions from plugins
+    repositories {
+        inherits true // Whether to inherit repository definitions from plugins
 
-    grailsPlugins()
-    grailsHome()
-    grailsCentral()
+        grailsPlugins()
+        grailsHome()
+        grailsCentral()
 
-    mavenLocal()
-    mavenCentral()
+        mavenLocal()
+        mavenCentral()
 
-    // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
-    //mavenRepo "http://snapshots.repository.codehaus.org"
-    //mavenRepo "http://repository.codehaus.org"
-    //mavenRepo "http://download.java.net/maven/2/"
-    //mavenRepo "http://repository.jboss.com/maven2/"
-  }
-  dependencies {
-    // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+        // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
+        //mavenRepo "http://snapshots.repository.codehaus.org"
+        //mavenRepo "http://repository.codehaus.org"
+        //mavenRepo "http://download.java.net/maven/2/"
+        //mavenRepo "http://repository.jboss.com/maven2/"
+    }
+    dependencies {
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+    }
 
-    // runtime 'mysql:mysql-connector-java:5.1.20'
-  }
+    plugins {
+        runtime ":hibernate:$grailsVersion"
+        runtime ":jquery:1.7.2"
+        runtime ":resources:1.1.6"
+        runtime ":cxf-client:1.5.2"
 
-  plugins {
-    runtime ":hibernate:$grailsVersion"
-    runtime ":jquery:1.7.2"
-    runtime ":resources:1.1.6"
-    runtime ":cxf-client:1.5.2"
+        test(":spock:0.7") {
+            exclude "spock-grails-support"
+        }
 
-    runtime ":spock:0.7"
+        // Uncomment these (or add new ones) to enable additional resources capabilities
+        //runtime ":zipped-resources:1.0"
+        //runtime ":cached-resources:1.0"
+        //runtime ":yui-minify-resources:0.1.4"
 
-    // Uncomment these (or add new ones) to enable additional resources capabilities
-    //runtime ":zipped-resources:1.0"
-    //runtime ":cached-resources:1.0"
-    //runtime ":yui-minify-resources:0.1.4"
+        build ":tomcat:$grailsVersion"
 
-    build ":tomcat:$grailsVersion"
+        runtime ":database-migration:1.1"
 
-    runtime ":database-migration:1.1"
-
-    compile ':cache:1.0.0'
-  }
+        compile ':cache:1.0.0'
+    }
 }
